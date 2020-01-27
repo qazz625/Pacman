@@ -1,0 +1,5 @@
+-1 = empty
+0 = dot
+1 = wall
+2 = player
+3 = enemy
