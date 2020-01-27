@@ -1,5 +1,7 @@
 import pygame
 import time
+from levels import level1
+# from tiles import 
 
 white = (0, 0, 0)
 blue = (0, 0, 255)
@@ -13,26 +15,7 @@ blue = (0, 0, 255)
 '''
 
 
-level =     [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-			 [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-			 [1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1],
-			 [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1],
-			 [1, 0, 1, 1, 1, 0, 1, 0, 1, 2, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-			 [1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1],
-			 [1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1],
-			 [1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-			 [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1],
-			 [1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1],
-			 [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1],
-			 [1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1],
-			 [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-			 [1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1],
-			 [1, 0, 0, 0, 0, 0, 0, 3, 0, 0, 1, 3, 0, 0, 0, 0, 0, 1, 0, 1],
-			 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1],
-			 [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-			 [1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1],
-			 [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-			 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+level = level1.level
 
 wallarr = []
 dotarr = []
@@ -50,7 +33,7 @@ for i in range(len(level)):
 
 class Player():
 	def __init__(self, x, y, display):
-		playerImg = pygame.image.load('player.png')
+		playerImg = pygame.image.load('tiles/player.png')
 		display.blit(playerImg, (x, y))
 
 
@@ -58,7 +41,7 @@ class Map():
 	def __init__(self, width, height, display, level):
 		#11 X 17
 		self.level = level
-		dotImg = pygame.image.load('dot.png')
+		dotImg = pygame.image.load('tiles/dot.png')
 		for i in range(len(self.level)):
 			for j in range(len(self.level[i])):
 				if self.level[i][j] == 1:
@@ -68,15 +51,11 @@ class Map():
 
 class Enemy():
 	def __init__(self, enemypos, display):
-		enemyImg = pygame.image.load('Enemy.png')
+		enemyImg = pygame.image.load('tiles/Enemy.png')
 		for i in enemypos:
 			display.blit(enemyImg, (i[0], i[1]))
 
 		
-
-
-
-
 
 
 def Game():
@@ -180,7 +159,7 @@ def Game():
 		p = Player(x, y, gameDisplay)
 		e = Enemy(enemypos, gameDisplay)
 		pygame.display.update()
-		clock.tick(30)
+		clock.tick(20)
 
 
 	pygame.quit()
