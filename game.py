@@ -88,7 +88,7 @@ def Game():
 		playerpos[1] += y_change//34
 
 		# print(enemyarr)
-		e.moveEnemy(enemyarr, graph, playerpos[1], playerpos[0])
+		# e.moveEnemy(enemyarr, graph, playerpos[1], playerpos[0])
 
 
 		pl.renderPlayer(x, y, gameDisplay)
